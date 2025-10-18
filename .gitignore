@@ -1,0 +1,90 @@
+## Build ##
+/Debug/
+debug/
+/build/
+**/build
+*/autogen*
+**/artifacts
+bin/
+
+## Cmake ##
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+# External projects
+*-prefix/
+
+## CPack ##
+CPackConfig.cmake
+CPackSourceConfig.cmake
+**/*_autogen
+package/
+
+## QtCreator ##
+*.autosave
+# Qml
+*.qmlproject.user
+*.qmlproject.user.*
+# CMake
+CMakeLists.txt.user*
+# Local machine specific files for imported projects
+*creator.user*
+*_qmlcache.qrc
+# A listing of all the files included in the project
+*.files
+# Include directories
+*.includes
+# Project configuration settings like predefined Macros
+*.config
+# Settings
+*.creator
+# User project settings
+*.creator.user*
+# Flags for Clang Code Model
+*.cxxflags
+*.cflags
+
+## Vim ##
+# Swap
+[._]*.s[a-v][a-z]
+!*.svg  # comment out if you don't need vector files
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+# Session
+Session.vim
+Sessionx.vim
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
+
+## VScode ##
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+# Local History for Visual Studio Code
+.history/
+# Built Visual Studio Code Extensions
+*.vsix
+# Ignore all local history of files
+.history
+.ionide
+
+## ClangD ##
+.cache

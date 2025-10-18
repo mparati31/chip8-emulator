@@ -1,0 +1,8 @@
+---
+BasedOnStyle: Microsoft
+ColumnLimit: 80
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+PointerAlignment: Left
+AlignConsecutiveAssignments: true
+AlwaysBreakTemplateDeclarations: Yes
+...
