@@ -70,8 +70,10 @@ endif()
 
 # Packaging --------------------------------------------------------------------
 
+string(REGEX REPLACE "^v" "" PACKAGE_VERSION "${GIT_VERSION}")
+
 set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
-set(CPACK_PACKAGE_VERSION "${GIT_VERSION}")
+set(CPACK_PACKAGE_VERSION "${PACKAGE_VERSION}")
 set(CPACK_PACKAGE_VENDOR "mparati")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "CHIP-8 Emulator")
 set(CPACK_PACKAGE_DESCRIPTION "A CHIP-8 emulator implementation")
