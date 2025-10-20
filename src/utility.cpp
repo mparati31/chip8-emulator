@@ -59,7 +59,9 @@ ParseResult parse(int argc, char* argv[])
 
         if (result.contains(help_opt.data()))
         {
-            std::print("{}", options.help());
+            std::println("{}", options.help());
+            std::println(
+                "Repository: https://github.com/mparati/chip8-emulator");
             return empty_options;
         }
 
