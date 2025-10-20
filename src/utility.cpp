@@ -33,10 +33,11 @@ ParseResult parse(int argc, char* argv[])
 {
     cxxopts::Options options(PROGRAM_NAME, PROGRAM_NAME " " PROGRAM_VERSION);
 
-    constexpr std::string_view rom_opt     = "rom";
-    constexpr std::string_view rate_opt    = "rate";
-    constexpr std::string_view help_opt    = "help";
-    constexpr std::string_view version_opt = "version";
+    constexpr std::string_view rom_opt       = "rom";
+    constexpr std::string_view rate_opt      = "rate";
+    constexpr std::string_view input_map_opt = "input-mapping";
+    constexpr std::string_view help_opt      = "help";
+    constexpr std::string_view version_opt   = "version";
 
     // NOLINTBEGIN(bugprone-suspicious-stringview-data-usage)
 
@@ -46,6 +47,7 @@ ParseResult parse(int argc, char* argv[])
             cxxopts::value<uint16_t>()->default_value("500"))
         (std::string("f,") + rom_opt.data(), "Path to the ROM file to load",
             cxxopts::value<std::string>())
+        (std::string("i,") + input_map_opt.data(), "Show input mapping")
         (std::string("h,") + help_opt.data(), "Print help information")
         (std::string("v,") + version_opt.data(), "Print version information");
     // clang-format on
@@ -61,13 +63,23 @@ ParseResult parse(int argc, char* argv[])
         {
             std::println("{}", options.help());
             std::println(
-                "Repository: https://github.com/mparati/chip8-emulator");
+                "Repository: https://github.com/mparati31/chip8-emulator");
             return empty_options;
         }
 
         if (result.contains(version_opt.data()))
         {
             std::println("{} {}", PROGRAM_NAME, PROGRAM_VERSION);
+            return empty_options;
+        }
+
+        if (result.contains(input_map_opt.data()))
+        {
+            std::println("CHIP-8 Input Mapping:\n");
+            std::println("  1 2 3 4  ->  1 2 3 C");
+            std::println("  Q W E R  ->  4 5 6 D");
+            std::println("  A S D F  ->  7 8 9 E");
+            std::println("  Z X C V  ->  A 0 B F");
             return empty_options;
         }
 
