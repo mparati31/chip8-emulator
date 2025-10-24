@@ -20,22 +20,18 @@
 namespace chip8
 {
 
-Chip8::Chip8(std::shared_ptr<IOManager> io, uint16_t rate)
+Chip8::Chip8(std::unique_ptr<IOManager> io, uint16_t rate)
     : io_{std::move(io)},
-      mem_{std::make_shared<Memory>()},
-      display_{std::make_shared<Display>(io_)},
-      cpu_{std::make_shared<Cpu>(io_, mem_, display_)},
+      mem_{std::make_unique<Memory>()},
+      display_{std::make_unique<Display>(io_.get())},
+      cpu_{std::make_unique<Cpu>(io_.get(), mem_.get(), display_.get())},
       cpu_rate_{rate}
 {
 }
 
-Chip8::Chip8(Chip8 const&) noexcept = default;
-
 Chip8::Chip8(Chip8&&) noexcept = default;
 
 Chip8::~Chip8() = default;
-
-Chip8& Chip8::operator=(Chip8 const&) noexcept = default;
 
 Chip8& Chip8::operator=(Chip8&&) noexcept = default;
 

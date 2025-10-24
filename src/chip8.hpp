@@ -22,13 +22,13 @@ enum class LoadRomError : uint8_t
 class Chip8
 {
   public:
-    Chip8(std::shared_ptr<IOManager> io, uint16_t rate);
-    Chip8(Chip8 const&) noexcept;
+    Chip8(std::unique_ptr<IOManager> io, uint16_t rate);
+    Chip8(Chip8 const&) = delete;
     Chip8(Chip8&&) noexcept;
 
     ~Chip8();
 
-    Chip8& operator=(Chip8 const&) noexcept;
+    Chip8& operator=(Chip8 const&) = delete;
     Chip8& operator=(Chip8&&) noexcept;
 
     std::expected<void, LoadRomError> load_rom(std::string const& path);
@@ -38,11 +38,11 @@ class Chip8
   private:
     void run_main_loop();
 
-    std::shared_ptr<IOManager> io_;
+    std::unique_ptr<IOManager> io_;
 
-    std::shared_ptr<Memory> mem_;
-    std::shared_ptr<Display> display_;
-    std::shared_ptr<Cpu> cpu_;
+    std::unique_ptr<Memory> mem_;
+    std::unique_ptr<Display> display_;
+    std::unique_ptr<Cpu> cpu_;
 
     uint16_t cpu_rate_;
 

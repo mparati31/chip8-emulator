@@ -5,13 +5,15 @@
 #include "utility.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <cstdint>
 
 namespace chip8
 {
 
-Display::Display(std::shared_ptr<IOManager> io) : io_{std::move(io)}
+Display::Display(IOManager* io) : io_{io}
 {
+    assert(io_);
 }
 
 void Display::clear() noexcept

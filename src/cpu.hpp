@@ -5,7 +5,6 @@
 
 #include <array>
 #include <cstdint>
-#include <memory>
 
 namespace chip8
 {
@@ -17,8 +16,7 @@ class Display;
 class Cpu
 {
   public:
-    Cpu(std::shared_ptr<IOManager> io, std::shared_ptr<Memory> mem,
-        std::shared_ptr<Display> display);
+    Cpu(IOManager* io, Memory* mem, Display* display);
 
     void tick();
 
@@ -82,10 +80,10 @@ class Cpu
 
     [[nodiscard]] bool is_key_vx_pressed() const noexcept;
 
-    std::shared_ptr<IOManager> io_;
+    IOManager* io_;
 
-    std::shared_ptr<Memory> mem_;
-    std::shared_ptr<Display> display_;
+    Memory* mem_;
+    Display* display_;
 
     std::array<uint8_t, cpu::n_registers> registers_{};
     uint16_t index_{};

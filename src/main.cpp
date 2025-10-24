@@ -62,8 +62,8 @@ std::optional<argparse::Options> parse_args(int argc, char* argv[], int& ret)
 
 int run_emulator(const chip8::utility::argparse::Options& opts)
 {
-    auto io = std::make_shared<chip8::Sdl2Manager>();
-    chip8::Chip8 emulator(io, opts.rate);
+    auto io = std::make_unique<chip8::Sdl2Manager>();
+    chip8::Chip8 emulator(std::move(io), opts.rate);
 
     if (auto load_res = emulator.load_rom(opts.rom);
         !handle_load_rom_result(load_res))

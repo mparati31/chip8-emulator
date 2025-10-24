@@ -4,7 +4,6 @@
 #include "constants.hpp"
 #include "utility.hpp"
 
-#include <memory>
 #include <span>
 
 namespace chip8
@@ -15,7 +14,7 @@ class IOManager;
 class Display
 {
   public:
-    explicit Display(std::shared_ptr<IOManager> io);
+    explicit Display(IOManager* io);
 
     void clear() noexcept;
 
@@ -25,7 +24,7 @@ class Display
     void print();
 
   private:
-    std::shared_ptr<IOManager> io_;
+    IOManager* io_;
 
     utility::matrix<bool, display::height_size, display::width_size> display_{};
 

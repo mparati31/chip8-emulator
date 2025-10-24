@@ -6,20 +6,21 @@
 #include "memory.hpp"
 #include "utility.hpp"
 
+#include <cassert>
 #include <cstdint>
-#include <memory>
 #include <print>
 #include <ranges>
 #include <span>
-#include <utility>
 
 namespace chip8
 {
 
-Cpu::Cpu(std::shared_ptr<IOManager> io, std::shared_ptr<Memory> mem,
-         std::shared_ptr<Display> display)
-    : io_{std::move(io)}, mem_{std::move(mem)}, display_{std::move(display)}
+Cpu::Cpu(IOManager* io, Memory* mem, Display* display)
+    : io_{io}, mem_{mem}, display_{display}
 {
+    assert(io_);
+    assert(mem_);
+    assert(display_);
 }
 
 void Cpu::tick()
